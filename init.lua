@@ -34,6 +34,29 @@ require("lazy").setup({
     end,
   },
   { "github/copilot.vim", lazy=false },
+  { 'nvim-treesitter/nvim-treesitter', config = function()
+      require('nvim-treesitter.configs').setup({
+        ensure_installed = { "typescript", "tsx", "javascript" },
+        highlight = { enable = true },
+        indent = { enable = true },
+        autotag = { enable = true },
+        context_commentstring = { enable = true },
+        incremental_selection = { enable = true },
+        refactor = { highlight_definitions = { enable = true } },
+        textobjects = {
+          select = {
+            enable = true,
+            keymaps = {
+              ["af"] = "@function.outer",
+              ["if"] = "@function.inner",
+              ["ac"] = "@class.outer",
+              ["ic"] = "@class.inner",
+            },
+          },
+        },
+      })
+    end,
+  },
   { 'stevearc/aerial.nvim', dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-lspconfig' }, config = function()
       require('aerial').setup({
         backends = { "lsp", "treesitter", "markdown" },

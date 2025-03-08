@@ -36,7 +36,7 @@ require("lazy").setup({
   { "github/copilot.vim", lazy=false },
   { 'nvim-treesitter/nvim-treesitter', config = function()
       require('nvim-treesitter.configs').setup({
-        ensure_installed = { "typescript", "tsx", "javascript" },
+        ensure_installed = { "typescript", "tsx", "javascript", "php" },
         highlight = { enable = true },
         indent = { enable = true },
         autotag = { enable = true },
